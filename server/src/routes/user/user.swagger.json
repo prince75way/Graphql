@@ -1,0 +1,143 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "User and Progress Tracking API",
+    "description": "API for user authentication, course enrollment, progress tracking, and watched module updates."
+  },
+  "tags": ["User"],
+  "host": "localhost:8000",
+  "schemes": ["http"],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "summary": "User Signup",
+        "description": "Registers a new user.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User details for registration",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "User Login",
+        "description": "Authenticates a user and returns a JWT token.",
+        "parameters": [
+          {
+            "name": "credentials",
+            "in": "body",
+            "description": "User credentials for login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginCredentials"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login successful, returns JWT token"
+          },
+          "400": {
+            "description": "Invalid credentials"
+          }
+        }
+      }
+    },
+   
+    "/user/refresh-token": {
+      "post": {
+        "summary": "Refresh Token",
+        "description": "Generates a new access token using the refresh token.",
+        "parameters": [
+          {
+            "name": "refreshToken",
+            "in": "body",
+            "description": "Refresh token to generate a new access token",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RefreshToken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Access token refreshed successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accessToken": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refresh token is required"
+          },
+          "403": {
+            "description": "Invalid or expired refresh token"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginCredentials": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Module": {
+      "type": "object",
+      "properties": {
+        "moduleId": {
+          "type": "string"
+        }
+      }
+    },
+    "RefreshToken": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

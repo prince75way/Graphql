@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-top: 64px; /* Space for the navbar height */
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .contentWrapper {
+    margin-top: 56px; /* Adjust for mobile navbar height */
+  }
+
+  .content {
+    padding: 12px;
+  }
+}

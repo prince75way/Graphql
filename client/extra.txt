@@ -1,0 +1,40 @@
+// import React from 'react';
+// import { useTranslation } from 'react-i18next';
+// import LanguageSwitcher from './LanguageSwitcher';
+
+// const App: React.FC = () => {
+//   const { t } = useTranslation();
+
+//   return (
+//     <div>
+//       <header>
+//         <h1>{t('title')}</h1>
+//         <LanguageSwitcher />
+//       </header>
+//       <main>
+//         <p>{t('welcome_message')}</p>
+//       </main>
+//     </div>
+//   );
+// };
+// <div>
+//   <h1>Welcome to My LMS</h1>
+//   <Suspense fallback={<div>Loading Home Component...</div>}>
+//     <Home />
+//   </Suspense>
+//   <Suspense fallback={<div>Loading About Component...</div>}>
+//     <About />
+//   </Suspense>
+//   <PostList/>
+// </div>
+
+// export default App;
+
+
+
+// import React, { Suspense } from 'react';
+// import PostList from './PostList';
+// import Home from './Home';
+// Lazy loading components
+// const Home = React.lazy(() => import('./Home'));
+// const About = React.lazy(() => import('./About'));
